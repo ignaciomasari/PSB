@@ -53,5 +53,5 @@ def Divide_in_classes(Y_orig,Y_orig2, interval):
   for y in range(n):
     Y_cl2[y,math.floor(Y_orig2[y] / interval)] = 1
 
-  return Y_cl,Y_cl2
+  return Y_cl,Y_cl2,classes
   
