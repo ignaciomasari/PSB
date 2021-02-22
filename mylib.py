@@ -42,7 +42,7 @@ def mount_data(folder):
 
 def Divide_in_classes(Y_orig,Y_orig2, interval):
 
-  classes = math.ceil(max(max(Y_orig),max(Y_orig2))/interval)
+  classes = math.ceil(max([max(Y_orig),max(Y_orig2)])/interval)
   n = Y_orig.shape[0]
   Y_cl = np.zeros([n,classes])
   for y in range(n):
