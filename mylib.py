@@ -24,7 +24,7 @@ def mount_data(folder):
   images = load_images_from_folder(folder2)
   pot = []
   fw = []
-  with open(folde + "/harvest.txt") as tsv:
+  with open(folder + "/harvest.txt") as tsv:
       for line in csv.reader(tsv, delimiter="\t"):
           if line[0] =='pot':
               continue
