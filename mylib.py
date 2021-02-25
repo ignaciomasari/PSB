@@ -33,7 +33,7 @@ def mount_data(folder,h,w):
 
   FW = []
 	
-  data = [images,FW]
+  data = [images[1],FW]
 
   for p in images[0]:
       if p in pot:
