@@ -11,8 +11,8 @@ def load_images_from_folder(folder):
     for filename in os.listdir(folder):
         img = cv2.imread(os.path.join(folder,filename))
         if img is not None:
-            #images.append(cv2.resize(img,(224,224)))
-            images.append(img)
+            images.append(cv2.resize(img,(224,224)))
+            #images.append(img)
             pos = filename.find(".")
             names.append(int(filename[:pos]))
     return [names,images]
