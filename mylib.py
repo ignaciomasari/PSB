@@ -11,8 +11,8 @@ def load_images_from_folder(folder):
     for filename in os.listdir(folder):
         img = cv2.imread(os.path.join(folder,filename))
         if img is not None:
-            images.append(cv2.resize(img,(224,224)))
-            #images.append(img)
+            #images.append(cv2.resize(img,(224,224)))
+            images.append(img)
             pos = filename.find(".")
             names.append(int(filename[:pos]))
     return [names,images]
@@ -20,12 +20,8 @@ def load_images_from_folder(folder):
 def mount_data(folder):
   drive.mount('/content/drive')
 
-  folder2 = folder + "/S0-0_0/Images"
-  images_S0_0_0 = load_images_from_folder(folder2)
-  folder2 = folder + "/S0-0_60/Images"
-  images_S0_0_60 = load_images_from_folder(folder2)
-  folder2 = folder + "/S0-0_120/Images"
-  images_S0_0_120 = load_images_from_folder(folder2)
+  folder2 = folder + "/Images"
+  images = load_images_from_folder(folder2)
   pot = []
   fw = []
   with open(folder + "/harvest.txt") as tsv:
@@ -36,17 +32,6 @@ def mount_data(folder):
           fw.append(float(str.replace(line[2],',','.')))
 
   FW = []
-  images = []
-  for i in images_S0_0_0:
-      images.append([i[0],i[1],np.array(np.zeros((512,512,3))),np.array(np.zeros((512,512,3)))])
-      for i60 in images_S0_0_60:
-          if i[0]==i60[0]:
-              images[-1][2] = i60[1]
-              break
-      for i120 in images_S0_0_120:
-          if i[0]==i120[0]:
-              images[-1][3] = i120[1]
-              break
 	
   data = [images,FW]
 
