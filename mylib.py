@@ -20,8 +20,7 @@ def load_images_from_folder(folder):
 def mount_data(folder):
   drive.mount('/content/drive')
 
-  folder2 = folder + "/Images"
-  images = load_images_from_folder(folder2)
+  images = load_images_from_folder(folder)
   pot = []
   fw = []
   with open(folder + "/harvest.txt") as tsv:
