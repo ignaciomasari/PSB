@@ -5,23 +5,23 @@ import numpy as np
 from google.colab import drive
 import math
 
-def load_images_from_folder(folder,size):
+def load_images_from_folder(folder,h,w):
     images = []
     names = []
     for filename in os.listdir(folder):
         img = cv2.imread(os.path.join(folder,filename))
         if img is not None:
-            images.append(cv2.resize(img,(size,size)))
+            images.append(cv2.resize(img,(h,w)))
             #images.append(img)
             pos = filename.find(".")
             names.append(int(filename[:pos]))
     return [names,images]
 	
-def mount_data(folder,size):
+def mount_data(folder,h,w):
   drive.mount('/content/drive')
 
   folder2 = folder + '/Concat_img'
-  images = load_images_from_folder(folder2,size)
+  images = load_images_from_folder(folder2,h,w)
   pot = []
   fw = []
   with open(folder + "/harvest.txt") as tsv:
