@@ -31,7 +31,7 @@ def mount_data(folder,h,w):
               continue
           pot.append(int(line[0]))
           fw.append(float(str.replace(line[2],',','.')))
-	  age.append(int(line[14]))
+		  age.append(int(line[14]))
 
   FW = []
   AGE = []
@@ -41,7 +41,7 @@ def mount_data(folder,h,w):
   for p in images[0]:
       if p in pot:
           FW.append(fw[pot.index(p)])
-	  AGE.append(age[pot.index(p)])
+		  AGE.append(age[pot.index(p)])
   return data  
 
 def Divide_in_classes(Y_orig,Y_orig2, interval):
@@ -58,4 +58,3 @@ def Divide_in_classes(Y_orig,Y_orig2, interval):
     Y_cl2[y,math.floor(Y_orig2[y] / interval)] = 1
 
   return Y_cl,Y_cl2,classes
-  
