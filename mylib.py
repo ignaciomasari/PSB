@@ -24,20 +24,24 @@ def mount_data(folder,h,w):
   images = load_images_from_folder(folder2,h,w)
   pot = []
   fw = []
+  age = []	
   with open(folder + "/harvest.txt") as tsv:
       for line in csv.reader(tsv, delimiter="\t"):
           if line[0] =='pot':
               continue
           pot.append(int(line[0]))
           fw.append(float(str.replace(line[2],',','.')))
+	  age.append(int(line[14]))
 
   FW = []
+  AGE = []
 	
-  data = [images[1],FW]
+  data = [images[1],FW,AGE]
 
   for p in images[0]:
       if p in pot:
           FW.append(fw[pot.index(p)])
+	  AGE.append(age[pot.index(p)])
   return data  
 
 def Divide_in_classes(Y_orig,Y_orig2, interval):
